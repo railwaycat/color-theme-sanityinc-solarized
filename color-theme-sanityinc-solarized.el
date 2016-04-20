@@ -249,8 +249,8 @@ names to which it refers are bound."
       (mode-line-emphasis (:foreground ,strong))
       (mode-line-highlight (:foreground ,magenta :box nil :weight bold))
       (minibuffer-prompt (:foreground ,blue))
-      (region (:foreground ,strong :inverse-video t))
-      (secondary-selection (:background ,alt-background))
+      (region (:background ,alt-background :foreground nil :inverse-video nil))
+      (secondary-selection (:foreground ,strong :inverse-video t))
 
       (header-line (:inherit mode-line :foreground ,magenta :background nil))
       (trailing-whitespace (:background ,red :underline nil))
