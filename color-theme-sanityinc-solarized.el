@@ -240,12 +240,12 @@ names to which it refers are bound."
       (highlight (:inverse-video nil :background ,alt-background))
       (gui-element (:background ,alt-background :foreground ,normal))
       (mode-line (:foreground nil :background ,alt-background :weight normal
-                              :box (:line-width 1 :color ,normal)))
+                              :box nil))
       (mode-line-buffer-id (:foreground ,magenta :background nil))
       (mode-line-inactive (:inherit mode-line
                                     :foreground ,faintest
                                     :background ,alt-background :weight normal
-                                    :box (:line-width 1 :color ,normal)))
+                                    :box nil))
       (mode-line-emphasis (:foreground ,strong))
       (mode-line-highlight (:foreground ,magenta :box nil :weight bold))
       (minibuffer-prompt (:foreground ,blue))
@@ -563,8 +563,10 @@ names to which it refers are bound."
       (jabber-activity-personal-face (:foreground ,cyan))
 
       ;; Powerline
-      (powerline-active1 (:foreground ,normal :background ,contrast-background))
-      (powerline-active2 (:foreground ,normal :background ,alt-background))
+      (powerline-active1 (:foreground ,background :background ,faintest))
+      (powerline-active2 (:foreground ,normal :background ,background))
+      (powerline-inactive1 (:foreground ,faint :background ,alt-background))
+      (powerline-inactive2 (:foreground ,faint :background ,background))
 
       ;; Outline
       (outline-1 (:inherit nil :foreground ,blue))
