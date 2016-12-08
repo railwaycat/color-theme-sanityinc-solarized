@@ -67,6 +67,12 @@
 Set this to t if using the sRGB patch on OS X."
   :group 'color-theme-sanityinc-solarized)
 
+(defcustom color-theme-sanityinc-solarized-16-is-term
+  (not window-system)
+  "Indicates whether use TERM color palettes. Set this to t if
+use Terminal color palettes and will ignore sRGB setting."
+  :group 'color-theme-sanityinc-solarized)
+
 ;; name     sRGB      Gen RGB   256       16              8
 '((base03  "#002b36" "#042028" "#1c1c1c" "brightblack"   "black")
   (base02  "#073642" "#0a2832" "#262626" "black"         "black")
@@ -90,23 +96,25 @@ Set this to t if using the sRGB patch on OS X."
 
 `MODE' should be set to either 'light or 'dark."
   ;; These are the Generic RGB equivalents of the "official" sRGB hex values
-  `(let* ((srgb color-theme-sanityinc-solarized-rgb-is-srgb)
-          (base03  (if srgb "#002b36" "#042028")) ; (0.0159 0.1265 0.1597)
-          (base02  (if srgb "#073642" "#0a2832")) ; (0.0394 0.1601 0.1983)
-          (base01  (if srgb "#586e75" "#465a61")) ; (0.2767 0.3567 0.3830)
-          (base00  (if srgb "#657b83" "#52676f")) ; (0.3244 0.4072 0.4385)
-          (base0   (if srgb "#839496" "#708183")) ; (0.4406 0.5096 0.5169)
-          (base1   (if srgb "#93a1a1" "#81908f")) ; (0.5060 0.5649 0.5636)
-          (base2   (if srgb "#eee8d5" "#e9e2cb")) ; (0.9161 0.8900 0.7978)
-          (base3   (if srgb "#fdf6e3" "#fcf4dc")) ; (0.9894 0.9579 0.8641)
-          (yellow  (if srgb "#b58900" "#a57705")) ; (0.6475 0.4675 0.0235)
-          (orange  (if srgb "#cb4b16" "#bd3612")) ; (0.7418 0.2133 0.0735)
-          (red     (if srgb "#dc322f" "#c60007")) ; (0.7770 0.0000 0.0290)
-          (magenta (if srgb "#d33682" "#c61b6e")) ; (0.7774 0.1080 0.4352)
-          (violet  (if srgb "#6c71c4" "#5859b7")) ; (0.3479 0.3514 0.7179)
-          (blue    (if srgb "#268bd2" "#2075c7")) ; (0.1275 0.4627 0.7823)
-          (cyan    (if srgb "#2aa198" "#259185")) ; (0.1468 0.5708 0.5250)
-          (green   (if srgb "#859900" "#728a05")) ; (0.4498 0.5412 0.0202)
+  `(let* ((term color-theme-sanityinc-solarized-16-is-term)
+          (srgb (if term nil color-theme-sanityinc-solarized-rgb-is-srgb))
+          (rgb  (if term nil (not srgb)))
+          (base03  (cond (srgb "#002b36") (rgb "#042028") (term "brightblack"))) ; (0.0159 0.1265 0.1597)
+          (base02  (cond (srgb "#073642") (rgb "#0a2832") (term "black"))) ; (0.0394 0.1601 0.1983)
+          (base01  (cond (srgb "#586e75") (rgb "#465a61") (term "brightgreen"))) ; (0.2767 0.3567 0.3830)
+          (base00  (cond (srgb "#657b83") (rgb "#52676f") (term "brightyellow"))) ; (0.3244 0.4072 0.4385)
+          (base0   (cond (srgb "#839496") (rgb "#708183") (term "brightblue"))) ; (0.4406 0.5096 0.5169)
+          (base1   (cond (srgb "#93a1a1") (rgb "#81908f") (term "brightcyan"))) ; (0.5060 0.5649 0.5636)
+          (base2   (cond (srgb "#eee8d5") (rgb "#e9e2cb") (term "white"))) ; (0.9161 0.8900 0.7978)
+          (base3   (cond (srgb "#fdf6e3") (rgb "#fcf4dc") (term "brightwhite"))) ; (0.9894 0.9579 0.8641)
+          (yellow  (cond (srgb "#b58900") (rgb "#a57705") (term "yellow"))) ; (0.6475 0.4675 0.0235)
+          (orange  (cond (srgb "#cb4b16") (rgb "#bd3612") (term "brightred"))) ; (0.7418 0.2133 0.0735)
+          (red     (cond (srgb "#dc322f") (rgb "#c60007") (term "red"))) ; (0.7770 0.0000 0.0290)
+          (magenta (cond (srgb "#d33682") (rgb "#c61b6e") (term "magenta"))) ; (0.7774 0.1080 0.4352)
+          (violet  (cond (srgb "#6c71c4") (rgb "#5859b7") (term "brightmagenta"))) ; (0.3479 0.3514 0.7179)
+          (blue    (cond (srgb "#268bd2") (rgb "#2075c7") (term "blue"))) ; (0.1275 0.4627 0.7823)
+          (cyan    (cond (srgb "#2aa198") (rgb "#259185") (term "cyan"))) ; (0.1468 0.5708 0.5250)
+          (green   (cond (srgb "#859900") (rgb "#728a05") (term "green"))) ; (0.4498 0.5412 0.0202)
           (foregrounds (list base1 base0 base00 base01))
           (backgrounds (list base03 base02))
           (contrast-backgrounds (list base3 base2)))
