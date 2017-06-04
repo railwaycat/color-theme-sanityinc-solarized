@@ -252,7 +252,7 @@ names to which it refers are bound."
       (mode-line-buffer-id (:foreground ,magenta :background nil))
       (mode-line-inactive (:inherit mode-line
                                     :foreground ,faintest
-                                    :background ,alt-background :weight normal
+                                    :background ,background :weight normal
                                     :box nil))
       (mode-line-emphasis (:foreground ,strong))
       (mode-line-highlight (:foreground ,magenta :box nil :weight bold))
