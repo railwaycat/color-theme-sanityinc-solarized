@@ -766,6 +766,19 @@ names to which it refers are bound."
       (term-color-magenta (:foreground ,magenta :background ,magenta))
       (term-color-cyan    (:foreground ,cyan :background ,cyan))
       (term-color-white   (:foreground ,background :background ,background))
+
+      ;; smart mode line
+      (sml/filename (:foreground ,strong :weight bold))
+      (sml/prefix (:foreground unspecified))
+      (sml/git (:foreground unspecified))
+      (sml/process (:weight bold))
+      (sml/sudo (:foreground ,orange :weight bold))
+      (sml/read-only (:foreground ,cyan))
+      (sml/outside-modified (:foreground , cyan))
+      (sml/modified (:foreground ,cyan))
+      (sml/vc-edited (:foreground ,green))
+      (sml/charging (:foreground ,strong))
+      (sml/discharging (:foreground ,strong :weight bold))
       ))))
 
 (defmacro color-theme-sanityinc-solarized--frame-parameter-specs ()
