@@ -94,6 +94,9 @@ use Terminal color palettes and will ignore sRGB setting."
 (defmacro color-theme-sanityinc-solarized--with-colors (mode &rest body)
   "Execute `BODY' in a scope with variables bound to the various solarized colors.
 
+Also sets background-mode to either 'light or 'dark, for use in
+setting `frame-background-mode'.
+
 `MODE' should be set to either 'light or 'dark."
   ;; These are the Generic RGB equivalents of the "official" sRGB hex values
   `(let* ((term color-theme-sanityinc-solarized-16-is-term)
@@ -129,7 +132,8 @@ use Terminal color palettes and will ignore sRGB setting."
            (faintest (nth 3 foregrounds))
            (contrast-alt-background (nth 0 contrast-backgrounds))
            (contrast-background (nth 1 contrast-backgrounds))
-           (class '((class color) (min-colors 89))))
+           (class '((class color) (min-colors 89)))
+           (background-mode (if (eq ,mode 'day) 'light 'dark)))
        ,@body)))
 
 (defmacro color-theme-sanityinc-solarized--face-specs ()
@@ -790,7 +794,7 @@ in a scope in which the various color names to which it refers
 are bound."
   (quote
    `(((background-color . ,background)
-      (background-mode . light)
+      (background-mode . ,background-mode)
       (border-color . ,normal)
       (cursor-color . ,magenta)
       (foreground-color . ,normal)
@@ -811,6 +815,8 @@ Argument MODE: 'light or 'dark"
                (color-theme-sanityinc-solarized--face-specs))
         (custom-theme-set-variables
          ',name
+         `(frame-background-mode ',background-mode)
+         `(beacon-color ,red)
          `(fci-rule-color ,alt-background)
          `(vc-annotate-color-map
            '((20 . ,red)
