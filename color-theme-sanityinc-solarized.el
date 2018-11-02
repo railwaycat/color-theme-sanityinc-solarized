@@ -253,12 +253,12 @@ names to which it refers are bound."
       (highlight (:inverse-video nil :background ,alt-background))
       (gui-element (:background ,alt-background :foreground ,normal))
       (mode-line (:foreground nil :background ,alt-background :weight normal
-                              :box nil))
+                              :box (:line-width 1 :color ,alt-background)))
       (mode-line-buffer-id (:foreground ,magenta :background nil))
       (mode-line-inactive (:inherit mode-line
                                     :foreground ,faintest
                                     :background ,background :weight normal
-                                    :box nil))
+                                    :box (:line-width 1 :color ,alt-background)))
       (mode-line-emphasis (:foreground ,strong))
       (mode-line-highlight (:foreground ,magenta :box nil :weight bold))
       (minibuffer-prompt (:foreground ,blue))
