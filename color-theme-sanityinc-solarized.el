@@ -831,6 +831,28 @@ names to which it refers are bound."
       (sml/vc-edited (:foreground ,green))
       (sml/charging (:foreground ,strong))
       (sml/discharging (:foreground ,strong :weight bold))
+
+      ;; whitespace mode
+      (whitespace-space (:background unspecified :foreground ,faintest
+                                     :inverse-video unspecified :slant italic))
+      (whitespace-hspace (:background unspecified :foreground ,faint
+                                      :inverse-video unspecified))
+      (whitespace-tab (:background unspecified :foreground ,red
+                                   :inverse-video t))
+      (whitespace-newline (:background unspecified :foreground ,strong
+                                       :inverse-video unspecified))
+      (whitespace-trailing (:background unspecified :foreground ,orange
+                                        :inverse-video t))
+      (whitespace-line (:background unspecified :foreground ,magenta
+                                    :inverse-video unspecified))
+      (whitespace-space-before-tab (:background ,red :foreground unspecified
+                                                :inverse-video unspecified))
+      (whitespace-indentation (:background unspecified :foreground ,yellow
+                                           :inverse-video unspecified :weight bold))
+      (whitespace-empty (:background unspecified :foreground ,red
+                                     :inverse-video t))
+      (whitespace-space-after-tab (:background unspecified :foreground ,orange
+                                               :inverse-video t :weight bold))
       ))))
 
 (defmacro color-theme-sanityinc-solarized--frame-parameter-specs ()
